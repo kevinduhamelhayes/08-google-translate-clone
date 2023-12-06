@@ -13,6 +13,7 @@ const initialState: State = {
 function reducer (state: State, action: Action) {
   const { type, payload } = action
   if (type === 'INTERCHANGE_LANGUAGES') {
+    if (state.fromLanguage === 'auto') return state
     return {
       ...state,
       fromLanguage: state.fromLanguage,
@@ -72,7 +73,7 @@ export function useStore () {
     dispatch({ type: 'SET_FROM_LANGUAGE', payload })
   }
 
-  const setToLanguage = (payload: Language) => {
+  const setToLanguage = (payload: toLanguage) => {
     dispatch({ type: 'SET_TO_LANGUAGE', payload })
   }
 
